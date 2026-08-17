@@ -1,0 +1,6 @@
+Flask
+Flask-MySQLdb
+python-dotenv
+Flask-Mail
+Werkzeug
+Flask-SQLAlchemy

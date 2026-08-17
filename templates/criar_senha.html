@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Criar senha - Imobiliária</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/base.css') }}"
+    >
+</head>
+
+<body>
+
+    <main class="container d-flex justify-content-center align-items-center min-vh-100">
+
+        <div class="card shadow-sm p-4" style="width: 100%; max-width: 400px;">
+
+            <h1 class="text-center mb-3">
+                Crie sua senha
+            </h1>
+
+            <p class="text-center text-muted">
+                Seu e-mail foi verificado. Agora crie uma senha para sua conta.
+            </p>
+
+            {% if erro %}
+                <div class="alert alert-danger text-center" role="alert">
+                    {{ erro }}
+                </div>
+            {% endif %}
+
+            <form method="POST" action="{{ url_for('cadastro.criar_senha') }}">
+
+                <div class="mb-3">
+                    <label for="senha" class="form-label">
+                        Senha
+                    </label>
+
+                    <input
+                        type="password"
+                        class="form-control"
+                        id="senha"
+                        name="senha"
+                        placeholder="Digite sua senha"
+                        required
+                    >
+                </div>
+
+                <div class="mb-3">
+                    <label for="confirmar_senha" class="form-label">
+                        Confirmar senha
+                    </label>
+
+                    <input
+                        type="password"
+                        class="form-control"
+                        id="confirmar_senha"
+                        name="confirmar_senha"
+                        placeholder="Digite sua senha novamente"
+                        required
+                    >
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100">
+                    Criar senha
+                </button>
+
+            </form>
+
+        </div>
+
+    </main>
+
+</body>
+
+</html>
