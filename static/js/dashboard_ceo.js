@@ -806,3 +806,141 @@ document.addEventListener('DOMContentLoaded', () => {
     );
 
 });
+
+const btnSuporte =
+    document.getElementById('btnSuporte');
+
+const modalSuporte =
+    document.getElementById('modalSuporte');
+
+const fecharModalSuporte =
+    document.getElementById('fecharModalSuporte');
+
+const enviarSuporte =
+    document.getElementById('enviarSuporte');
+
+const descricaoSuporte =
+    document.getElementById('descricaoSuporte');
+
+const erroSuporte =
+    document.getElementById('erroSuporte');
+
+
+// ==============================
+// ABRIR SUPORTE
+// ==============================
+
+btnSuporte.addEventListener('click', (event) => {
+
+    event.preventDefault();
+
+    // Abre o modal
+    modalSuporte.classList.add('ativo');
+
+    // Limpa o campo
+    descricaoSuporte.value = '';
+
+    // Limpa mensagem de erro
+    erroSuporte.textContent = '';
+
+    // Foco no campo
+    descricaoSuporte.focus();
+
+    // Cursor no início
+    descricaoSuporte.setSelectionRange(0, 0);
+
+});
+
+
+// ==============================
+// FECHAR
+// ==============================
+
+fecharModalSuporte.addEventListener('click', () => {
+
+    modalSuporte.classList.remove('ativo');
+
+});
+
+
+// ==============================
+// ENVIAR
+// ==============================
+
+enviarSuporte.addEventListener('click', async () => {
+
+    const descricao =
+        descricaoSuporte.value.trim();
+
+
+    erroSuporte.textContent = '';
+
+
+    if (!descricao) {
+
+        erroSuporte.textContent =
+            'Descreva o problema antes de enviar.';
+
+        return;
+
+    }
+
+
+    try {
+
+        const resposta = await fetch(
+            '/suporte/enviar',
+            {
+
+                method: 'POST',
+
+                headers: {
+                    'Content-Type':
+                        'application/json'
+                },
+
+                body: JSON.stringify({
+
+                    descricao: descricao
+
+                })
+
+            }
+        );
+
+
+        const resultado =
+            await resposta.json();
+
+
+        if (!resposta.ok) {
+
+            erroSuporte.textContent =
+                resultado.erro ||
+                'Não foi possível enviar a solicitação.';
+
+            return;
+
+        }
+
+
+        alert(
+            'Sua solicitação foi enviada com sucesso!'
+        );
+
+
+        descricaoSuporte.value = '';
+
+        modalSuporte.classList.remove('ativo');
+
+
+    } catch (erro) {
+
+        console.error(erro);
+
+        erroSuporte.textContent =
+            'Erro de comunicação com o servidor.';
+
+    }
+
+});

@@ -25,7 +25,35 @@
     >
 
 </head>
+<header class="header">
 
+    <div class="header-logo">
+        <a href="/dashboard/ceo">
+            Imobiliária
+        </a>
+    </div>
+
+    <nav class="header-nav">
+
+        <a href="#">
+            Mais vendidos
+        </a>
+
+        <a href="#">
+            O que somos
+        </a>
+
+        <a href="#" id="btnSuporte">
+            Suporte
+        </a>
+
+        <a href="/">
+            Sair
+        </a>
+
+    </nav>
+
+</header>
 <body>
 
     <main class="dashboard">
@@ -75,6 +103,21 @@
         </div>
 
     </main>
+<footer class="footer">
+
+    <div class="footer-marca">
+
+        <span>
+            Desenvolvido por
+        </span>
+
+        <strong>
+            Equipe SeuSite.com
+        </strong>
+
+    </div>
+
+</footer>
 
 
     <!-- MODAIS -->
@@ -82,6 +125,8 @@
     {% include 'modal/adicionarImobiliaria_modal.html' %}
 
     {% include 'modal/cadastrarTipoImobiliaria_modal.html' %}
+
+    {% include 'modal/suporte_modal.html' %}
 
 
     <!-- JAVASCRIPT -->
