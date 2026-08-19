@@ -1,0 +1,133 @@
+<div
+    class="modal"
+    id="modalCadastrarTipo">
+
+    <div class="modal-conteudo">
+
+        <div class="modal-header">
+
+            <h2>Novo tipo de imobiliária</h2>
+
+            <button
+                type="button"
+                id="fecharModalCadastrar">
+
+                ×
+
+            </button>
+
+        </div>
+
+
+        <form
+            id="formCadastrarTipo"
+            enctype="multipart/form-data">
+
+
+            <!-- NOME -->
+
+            <div class="campo">
+
+                <label for="nomeTipo">
+                    Nome
+                </label>
+
+                <input
+                    type="text"
+                    id="nomeTipo"
+                    name="nome"
+                    placeholder="Ex: Casa"
+                    required
+                >
+
+                <span
+                    id="erroNomeTipo"
+                    class="erro">
+                </span>
+
+            </div>
+
+
+            <!-- FOTO -->
+
+            <div class="campo">
+
+                <label for="fotoTipo">
+                    Foto
+                </label>
+
+                <input
+                    type="file"
+                    id="fotoTipo"
+                    name="foto"
+                    accept="image/png,image/jpeg,image/webp"
+                    required
+                >
+
+                <span
+                    id="erroFotoTipo"
+                    class="erro">
+                </span>
+
+
+                <!-- ÁREA DE CORTE -->
+
+                <div
+                    id="areaCorte"
+                    style="display: none;">
+
+                    <div class="crop-container">
+
+                        <img
+                            id="imagemCorte"
+                            class="imagem-corte"
+                            src=""
+                            alt="Imagem para recorte">
+
+                    </div>
+
+                    <button
+                        type="button"
+                        id="confirmarCorte">
+
+                        Confirmar corte
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- PREVIEW -->
+
+            <div
+                id="previewFoto"
+                class="preview-foto"
+                style="display: none;">
+
+                <p>Foto selecionada:</p>
+
+                <img
+                    id="previewImagem"
+                    class="categoria-foto"
+                    src=""
+                    alt="Preview da foto">
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="btn-cadastrar">
+
+                Cadastrar
+
+            </button>
+
+
+        </form>
+
+    </div>
+
+</div>

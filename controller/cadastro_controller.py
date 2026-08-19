@@ -10,15 +10,16 @@ from services.email_cadastro import enviar_codigo_email
 
 def processar_cadastro(nome, email):
 
-    usuario_existente = Usuario.query.filter_by(
-        email=email
-    ).first()
+    # Verifica se o e-mail já está cadastrado
+    usuario_existente = Usuario.query.filter_by(email=email).first()
 
     if usuario_existente:
-        return False
+        return False, 'Usuário já cadastrado.'
 
+    # Gera o código
     codigo = random.randint(100000, 999999)
 
+    # Salva os dados temporariamente na sessão
     session['cadastro_nome'] = nome
     session['cadastro_email'] = email
     session['cadastro_codigo'] = codigo
@@ -32,7 +33,7 @@ def processar_cadastro(nome, email):
         codigo
     )
 
-    return True
+    return True, None
 
 
 def validar_codigo(codigo):

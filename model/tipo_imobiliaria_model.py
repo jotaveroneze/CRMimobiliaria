@@ -1,5 +1,6 @@
 from extensions import db
 
+
 class TipoImobiliaria(db.Model):
 
     __tablename__ = 'tipo_imobiliaria'
@@ -12,5 +13,11 @@ class TipoImobiliaria(db.Model):
 
     nome = db.Column(
         db.String(80),
+        nullable=False,
+        unique=True
+    )
+
+    foto = db.Column(
+        db.String(255),
         nullable=False
     )

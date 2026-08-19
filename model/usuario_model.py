@@ -1,7 +1,8 @@
 from extensions import db
+from flask_login import UserMixin
 
 
-class Usuario(db.Model):
+class Usuario(db.Model, UserMixin):
 
     __tablename__ = 'usuario'
 
@@ -25,12 +26,6 @@ class Usuario(db.Model):
     senha = db.Column(
         db.String(255),
         nullable=False
-    )
-
-    id_tipo_imobiliaria = db.Column(
-        db.Integer,
-        db.ForeignKey('tipo_imobiliaria.id'),
-        nullable=True
     )
 
     tipo_usuario = db.Column(

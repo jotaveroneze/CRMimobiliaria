@@ -1,5 +1,6 @@
 from flask import Flask, render_template
 from flask_mail import Mail
+from flask_login import LoginManager
 
 from extensions import db
 from model.usuario_model import Usuario
@@ -11,6 +12,16 @@ from route.login_route import login_route
 
 
 app = Flask(__name__)
+
+login_manager = LoginManager()
+login_manager.init_app(app)
+
+login_manager.login_view = 'login.login'
+
+@login_manager.user_loader
+def load_user(user_id):
+    return Usuario.query.get(int(user_id))
+
 
 app.config['SECRET_KEY'] = '34692b781c4c7cfa89c6e09601dca96f41de9a8dec769aad8d1f74cb34b9a2f7'
 

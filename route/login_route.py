@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, redirect, url_for, session
-
+from flask_login import login_user
 from controller.login_controller import autenticar_usuario
 
 
@@ -25,10 +25,22 @@ def login():
                 erro='Nome, e-mail ou senha incorretos.'
             )
 
+        login_user(usuario)
+
         session['usuario_id'] = usuario.id
         session['usuario_nome'] = usuario.nome
         session['usuario_email'] = usuario.email
+        session['tipo_usuario'] = usuario.tipo_usuario
 
-        return redirect(url_for('dashboard.dashboard'))
+        # CEO
+        if usuario.tipo_usuario == 1:
+            return redirect(
+                url_for('dashboard.dashboard_ceo_route')
+            )
+
+        # Usuário comum
+        return redirect(
+            url_for('dashboard.dashboard_usuario')
+        )
 
     return render_template('login.html')

@@ -18,12 +18,16 @@ def cadastro():
         nome = request.form['nome']
         email = request.form['email']
 
-        resultado = processar_cadastro(nome, email)
+        sucesso, erro = processar_cadastro(
+            nome,
+            email
+        )
 
-        if not resultado:
+        if not sucesso:
+
             return render_template(
                 'cadastro.html',
-                erro='E-mail já cadastrado!'
+                erro=erro
             )
 
         return redirect(url_for('cadastro.codigo'))

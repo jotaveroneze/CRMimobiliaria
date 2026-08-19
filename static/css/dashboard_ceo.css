@@ -1,0 +1,215 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+}
+
+
+/* ==========================
+   ÁREA DO DASHBOARD
+========================== */
+
+.dashboard {
+    margin-left: 250px;
+
+    width: calc(100% - 250px);
+
+    min-height: calc(100vh - 80px);
+
+    padding: 110px;
+
+    box-sizing: border-box;
+}
+
+
+/* ==========================
+   CATEGORIAS
+========================== */
+
+.categorias {
+
+    display: grid;
+
+    /* 5 categorias por linha */
+    grid-template-columns: repeat(5, 180px);
+
+    /* Espaço lateral */
+    column-gap: 35px;
+
+    /* Espaço entre linhas */
+    row-gap: 10px;
+
+    justify-content: start;
+
+    width: 100%;
+
+    margin: 40px 0 0 30px;
+}
+
+
+/* ==========================
+   CARD DA CATEGORIA
+========================== */
+
+.categoria-card {
+
+    width: 180px;
+
+    height: 180px;
+
+    border: 2px solid #d9d9d9;
+
+    border-radius: 16px;
+
+    background: #fff;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 14px;
+
+    padding: 20px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+/* ==========================
+   FOTO
+========================== */
+
+.imagem-corte {
+    max-width: 100%;
+    max-height: 500px;
+    display: block;
+}
+
+.categoria-foto {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 14px;
+    display: block;
+}
+
+
+/* ==========================
+   NOME
+========================== */
+
+.categoria-nome {
+
+    font-size: 18px;
+
+    font-weight: 600;
+
+    text-align: center;
+
+    color: #222;
+}
+
+
+/* ==========================
+   HOVER CARD
+========================== */
+
+.categoria-card:hover {
+
+    border-color: #999;
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+
+/* ==========================
+   BOTÃO +
+========================== */
+
+.adicionar-categoria {
+
+    width: 180px;
+
+    height: 180px;
+
+    border: 2px dashed #d9d9d9;
+
+    border-radius: 16px;
+
+    background: #fff;
+
+    font-size: 42px;
+
+    color: #888;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    transition: 0.2s;
+}
+
+
+/* ==========================
+   HOVER +
+========================== */
+
+.adicionar-categoria:hover {
+
+    border-color: #999;
+
+    color: #333;
+
+    transform: translateY(-3px);
+}
+
+.crop-container {
+    width: 100%;
+    max-width: 500px;
+    max-height: 500px;
+    margin-top: 15px;
+    overflow: hidden;
+}
+
+.imagem-corte {
+    display: block;
+    max-width: 100%;
+}
+
+#confirmarCorte {
+    margin-top: 15px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.preview-foto {
+    margin-top: 20px;
+}
+
+.categoria-foto {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 14px;
+    display: block;
+}

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard CEO</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/dashboard_ceo.css') }}">
+
+    <link rel="stylesheet"
+          href="{{ url_for(
+              'static',
+              filename='css/modal/adicionarImobiliaria_modal.css'
+          ) }}">
+
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css"
+    >
+
+</head>
+
+<body>
+
+    <main class="dashboard">
+
+        <div class="categorias">
+
+            {% for categoria in categorias %}
+
+                <div class="categoria-card">
+
+                    <!-- FOTO DA CATEGORIA -->
+
+                    <img
+                        src="{{ url_for(
+                            'static',
+                            filename='imagens/tipos/' + categoria.tipo_imobiliaria.foto
+                        ) }}"
+                        alt="{{ categoria.tipo_imobiliaria.nome }}"
+                        class="categoria-foto"
+                    >
+
+
+                    <!-- NOME DA CATEGORIA -->
+
+                    <span class="categoria-nome">
+
+                        {{ categoria.tipo_imobiliaria.nome }}
+
+                    </span>
+
+                </div>
+
+            {% endfor %}
+
+
+            <!-- BOTÃO + -->
+
+            <button
+                type="button"
+                id="btnAdicionarCategoria"
+                class="adicionar-categoria">
+
+                +
+
+            </button>
+
+        </div>
+
+    </main>
+
+
+    <!-- MODAIS -->
+
+    {% include 'modal/adicionarImobiliaria_modal.html' %}
+
+    {% include 'modal/cadastrarTipoImobiliaria_modal.html' %}
+
+
+    <!-- JAVASCRIPT -->
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.js">
+    </script>
+
+    <script
+        src="{{ url_for('static', filename='js/dashboard_ceo.js') }}">
+    </script>
+
+</body>
+
+</html>
