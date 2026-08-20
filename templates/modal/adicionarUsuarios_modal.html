@@ -1,0 +1,83 @@
+<div id="adicionarUsuarios_modal" class="modal-usuario">
+
+    <div class="modal-usuario-conteudo">
+
+        <button
+            type="button"
+            class="fechar-modal-usuario"
+            id="fecharAdicionarUsuario">
+            ×
+        </button>
+
+        <h2>Adicionar usuário</h2>
+
+        <form id="formAdicionarUsuario" class="form-usuario">
+
+            <div class="form-usuario-grupo">
+                <label for="nomeUsuario">
+                    Nome
+                </label>
+
+                <input
+                    type="text"
+                    id="nomeUsuario"
+                    name="nome"
+                    placeholder="Nome completo"
+                    required>
+            </div>
+
+
+            <div class="form-usuario-grupo">
+                <label for="emailUsuario">
+                    E-mail
+                </label>
+
+                <input
+                    type="email"
+                    id="emailUsuario"
+                    name="email"
+                    placeholder="E-mail"
+                    required>
+            </div>
+
+
+            <div class="form-usuario-grupo">
+
+                <label>
+                    Senha padrão
+                </label>
+
+                <div class="senha-padrao">
+                    Imobiliaria@2026
+                </div>
+
+            </div>
+
+
+            <div class="form-usuario-botoes">
+
+                <button
+                    type="button"
+                    class="btn-cancelar-usuario"
+                    id="cancelarAdicionarUsuario">
+                    Cancelar
+                </button>
+
+                <button
+                    type="submit"
+                    class="btn-criar-usuario">
+                    Criar usuário
+                </button>
+
+            </div>
+
+            <div
+                id="erroAdicionarUsuario"
+                class="erro-adicionar-usuario">
+            </div>
+
+        </form>
+
+    </div>
+
+</div>

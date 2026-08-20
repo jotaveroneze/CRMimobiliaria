@@ -47,6 +47,30 @@
             Suporte
         </a>
 
+        <div class="header-config">
+
+            <a href="#" id="btnConfiguracoes" title="Configurações">
+                ⚙
+            </a>
+
+            <div class="config-menu" id="configMenu">
+
+                <a href="#" id="btnAdicionarUsuario">
+                    Adicionar usuário
+                </a>
+
+                <a href="#">
+                    Permissões
+                </a>
+
+                <a href="#">
+                    Editar usuários
+                </a>
+
+            </div>
+
+        </div>
+
         <a href="/">
             Sair
         </a>
@@ -128,6 +152,7 @@
 
     {% include 'modal/suporte_modal.html' %}
 
+    {% include 'modal/adicionarUsuarios_modal.html' %}
 
     <!-- JAVASCRIPT -->
     <script

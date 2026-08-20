@@ -35,7 +35,7 @@ body {
     align-items: center;
     justify-content: space-between;
 
-    padding: 0 50px;
+    padding: 0 30px 0 25px;
 
     background: #ffffff;
 
@@ -76,11 +76,11 @@ body {
 .categorias {
     display: grid;
 
-    grid-template-columns: repeat(5, 180px);
+    grid-template-columns: repeat(5, 220px);
 
     column-gap: 35px;
 
-    row-gap: 10px;
+    row-gap: 15px;
 
     justify-content: start;
 
@@ -95,8 +95,8 @@ body {
 ========================== */
 
 .categoria-card {
-    width: 180px;
-    height: 180px;
+    width: 220px;
+    height: 220px;
 
     border: 2px solid #d9d9d9;
 
@@ -132,9 +132,10 @@ body {
     display: block;
 }
 
+
 .categoria-foto {
-    width: 100px;
-    height: 100px;
+    width: 140px;
+    height: 140px;
 
     object-fit: cover;
 
@@ -215,14 +216,32 @@ body {
 ========================== */
 
 .crop-container {
-    width: 100%;
-    max-width: 500px;
-    max-height: 500px;
+    width: 700px;
+    height: 700px;
+
+    max-width: 100%;
+    max-height: 700px;
 
     margin-top: 15px;
 
     overflow: hidden;
 }
+
+
+/* ==========================
+   IMAGEM DO CROP
+========================== */
+
+.crop-container img {
+    display: block;
+
+    max-width: 100%;
+}
+
+
+/* ==========================
+   BOTÃO CONFIRMAR
+========================== */
 
 #confirmarCorte {
     margin-top: 15px;
@@ -235,8 +254,29 @@ body {
     cursor: pointer;
 }
 
+
+/* ==========================
+   PREVIEW
+========================== */
+
 .preview-foto {
     margin-top: 20px;
+}
+
+
+/* ==========================
+   FOTO NO CARD
+========================== */
+
+.categoria-foto {
+    width: 140px;
+    height: 140px;
+
+    object-fit: cover;
+
+    border-radius: 14px;
+
+    display: block;
 }
 
 
@@ -288,13 +328,14 @@ body {
    LOGO
 ========================== */
 
+.header-logo {
+    margin-left: 20px;
+}
+
 .header-logo a {
     text-decoration: none;
-
     font-size: 22px;
-
     font-weight: 700;
-
     color: #222;
 }
 
@@ -328,30 +369,131 @@ body {
 .header-nav a:hover {
     color: #111;
 }
+/* ==========================
+   MENU DE CONFIGURAÇÕES
+========================== */
+
+.header-config {
+    position: relative;
+
+    height: 25px;
+
+    padding-left: 25px;
+
+    border-left: 1px solid #e5e5e5;
+
+    display: flex;
+    align-items: center;
+}
 
 
 /* ==========================
-   LINHA MENU
+   ENGRENAGEM
 ========================== */
 
-.header-nav a::after {
-    content: "";
+.header-config > a {
+    position: static;
 
-    position: absolute;
+    text-decoration: none;
 
-    left: 0;
-    bottom: -7px;
+    font-size: 20px;
 
-    width: 0;
-    height: 2px;
+    color: #444;
 
-    background: #222;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    transition: width 0.2s ease;
+    cursor: pointer;
+
+    transition:
+        color 0.2s ease,
+        transform 0.2s ease;
 }
 
-.header-nav a:hover::after {
+.header-config > a:hover {
+    color: #111;
+
+    transform: rotate(25deg);
+}
+
+.header-config > a::after {
+    display: none;
+}
+
+
+/* ==========================
+   PAINEL
+========================== */
+
+.config-menu {
+    position: absolute;
+
+    top: 38px;
+    right: 0;
+
+    width: 220px;
+
+    background: #ffffff;
+
+    border: 1px solid #e2e2e2;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 6px 20px rgba(0, 0, 0, 0.10);
+
+    padding: 8px;
+
+    display: none;
+
+    z-index: 2000;
+}
+
+
+/* PAINEL ABERTO */
+
+.config-menu.ativo {
+    display: block;
+}
+
+
+/* ==========================
+   OPÇÕES
+========================== */
+
+.config-menu a {
+    position: static;
+
+    display: block;
+
     width: 100%;
+
+    padding: 11px 12px;
+
+    border-radius: 7px;
+
+    color: #333;
+
+    font-size: 14px;
+
+    font-weight: 400;
+
+    text-decoration: none;
+
+    transition:
+        background-color 0.15s ease,
+        color 0.15s ease;
+}
+
+.config-menu a:hover {
+    background-color: #f5f5f5;
+
+    color: #111;
+}
+
+.config-menu a::after {
+    display: none;
 }
 
 
@@ -382,4 +524,287 @@ body {
 
 #descricaoSuporte::placeholder {
     text-align: left;
+}
+
+/* ==========================
+   MODAL - ADICIONAR USUÁRIO
+========================== */
+
+.modal-usuario {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0, 0, 0, 0.45);
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    z-index: 2000;
+}
+
+.modal-usuario.ativo {
+    display: flex;
+}
+
+
+/* ==========================
+   CONTEÚDO
+========================== */
+
+.modal-usuario-conteudo {
+    width: 500px;
+    max-width: 90%;
+
+    background: #ffffff;
+
+    border-radius: 16px;
+
+    padding: 30px;
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.20);
+
+    position: relative;
+}
+
+
+/* ==========================
+   TÍTULO
+========================== */
+
+.modal-usuario-conteudo h2 {
+    margin: 0 0 25px 0;
+
+    font-size: 24px;
+
+    font-weight: 600;
+
+    color: #222;
+}
+
+
+/* ==========================
+   BOTÃO FECHAR
+========================== */
+
+.fechar-modal-usuario {
+    position: absolute;
+
+    top: 20px;
+    right: 22px;
+
+    border: none;
+
+    background: transparent;
+
+    font-size: 25px;
+
+    color: #333;
+
+    cursor: pointer;
+
+    line-height: 1;
+
+    transition: 0.2s;
+}
+
+.fechar-modal-usuario:hover {
+    color: #000;
+
+    transform: scale(1.1);
+}
+
+
+/* ==========================
+   CAMPOS
+========================== */
+
+.form-usuario {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 16px;
+}
+
+
+.form-usuario-grupo {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+}
+
+
+.form-usuario-grupo label {
+    font-size: 14px;
+
+    font-weight: 500;
+
+    color: #333;
+}
+
+
+.form-usuario-grupo input {
+    width: 100%;
+
+    height: 44px;
+
+    padding: 10px 12px;
+
+    border: 1px solid #d5d5d5;
+
+    border-radius: 6px;
+
+    outline: none;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 14px;
+
+    color: #333;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.form-usuario-grupo input::placeholder {
+    color: #999;
+}
+
+
+.form-usuario-grupo input:focus {
+    border-color: #0d6efd;
+
+    box-shadow:
+        0 0 0 2px rgba(13, 110, 253, 0.12);
+}
+
+
+/* ==========================
+   SENHA PADRÃO
+========================== */
+
+.senha-padrao {
+    width: 100%;
+
+    height: 44px;
+
+    display: flex;
+
+    align-items: center;
+
+    padding: 0 12px;
+
+    background: #f5f5f5;
+
+    border: 1px solid #e0e0e0;
+
+    border-radius: 6px;
+
+    font-size: 14px;
+
+    color: #333;
+}
+
+
+/* ==========================
+   BOTÕES
+========================== */
+
+.form-usuario-botoes {
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    margin-top: 8px;
+}
+
+
+.form-usuario-botoes button {
+    height: 42px;
+
+    padding: 0 18px;
+
+    border-radius: 6px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+/* CANCELAR */
+
+.btn-cancelar-usuario {
+    background: #ffffff;
+
+    border: 1px solid #d5d5d5;
+
+    color: #444;
+}
+
+
+.btn-cancelar-usuario:hover {
+    background: #f5f5f5;
+}
+
+
+/* CRIAR */
+
+.btn-criar-usuario {
+    background: #0d6efd;
+
+    border: 1px solid #0d6efd;
+
+    color: #ffffff;
+}
+
+
+.btn-criar-usuario:hover {
+    background: #0b5ed7;
+
+    border-color: #0b5ed7;
+}
+
+
+.btn-criar-usuario:active {
+    background: #0a58ca;
+}
+
+.erro-adicionar-usuario {
+    color: #d32f2f;
+    font-size: 14px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* ==========================
+   RESPONSIVIDADE
+========================== */
+
+@media (max-width: 576px) {
+
+    .modal-usuario-conteudo {
+        width: 95%;
+
+        padding: 25px 20px;
+    }
+
 }

@@ -80,3 +80,31 @@ def cadastrar_usuario(senha, confirmar_senha):
     session.pop('cadastro_codigo', None)
 
     return True, None
+
+SENHA_PADRAO = 'Imobiliaria@2026'
+
+
+def cadastrar_usuario_ceo(nome, email):
+
+    # Verifica se o e-mail já existe
+    usuario_existente = Usuario.query.filter_by(
+        email=email
+    ).first()
+
+    if usuario_existente:
+        return False, 'Usuário já cadastrado.'
+
+    # Cria o hash da senha padrão
+    senha_hash = generate_password_hash(SENHA_PADRAO)
+
+    usuario = Usuario(
+        nome=nome,
+        email=email,
+        senha=generate_password_hash(SENHA_PADRAO),
+        tipo_usuario=0
+    )
+
+    db.session.add(usuario)
+    db.session.commit()
+
+    return True, None

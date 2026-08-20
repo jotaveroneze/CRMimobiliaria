@@ -944,3 +944,254 @@ enviarSuporte.addEventListener('click', async () => {
     }
 
 });
+
+// ==============================
+// MENU DE CONFIGURAÇÕES
+// ==============================
+
+const btnConfiguracoes =
+    document.getElementById('btnConfiguracoes');
+
+const configMenu =
+    document.getElementById('configMenu');
+
+
+if (btnConfiguracoes && configMenu) {
+
+    // ABRIR / FECHAR
+    btnConfiguracoes.addEventListener('click', (event) => {
+
+        event.preventDefault();
+
+        configMenu.classList.toggle('ativo');
+
+    });
+
+
+    // FECHAR AO CLICAR FORA
+    document.addEventListener('click', (event) => {
+
+        if (
+            !btnConfiguracoes.contains(event.target) &&
+            !configMenu.contains(event.target)
+        ) {
+
+            configMenu.classList.remove('ativo');
+
+        }
+
+    });
+
+    // ==============================
+// ADICIONAR USUÁRIO
+// ==============================
+
+const btnAdicionarUsuario =
+    document.getElementById('btnAdicionarUsuario');
+
+const modalAdicionarUsuario =
+    document.getElementById('adicionarUsuarios_modal');
+
+const fecharAdicionarUsuario =
+    document.getElementById('fecharAdicionarUsuario');
+
+const cancelarAdicionarUsuario =
+    document.getElementById('cancelarAdicionarUsuario');
+
+const formAdicionarUsuario =
+    document.getElementById('formAdicionarUsuario');
+
+const erroAdicionarUsuario =
+    document.getElementById('erroAdicionarUsuario');
+
+
+// ==============================
+// ABRIR MODAL
+// ==============================
+
+if (
+    btnAdicionarUsuario &&
+    modalAdicionarUsuario
+) {
+
+    btnAdicionarUsuario.addEventListener(
+        'click',
+        (event) => {
+
+            event.preventDefault();
+
+            modalAdicionarUsuario.classList.add(
+                'ativo'
+            );
+
+            // Fecha o menu da engrenagem
+            if (configMenu) {
+                configMenu.classList.remove(
+                    'ativo'
+                );
+            }
+
+        }
+    );
+
+}
+
+
+// ==============================
+// FECHAR PELO X
+// ==============================
+
+if (fecharAdicionarUsuario) {
+
+    fecharAdicionarUsuario.addEventListener(
+        'click',
+        () => {
+
+            modalAdicionarUsuario.classList.remove(
+                'ativo'
+            );
+
+        }
+    );
+
+}
+
+
+// ==============================
+// FECHAR PELO CANCELAR
+// ==============================
+
+if (cancelarAdicionarUsuario) {
+
+    cancelarAdicionarUsuario.addEventListener(
+        'click',
+        () => {
+
+            modalAdicionarUsuario.classList.remove(
+                'ativo'
+            );
+
+        }
+    );
+
+}
+
+
+// ==============================
+// FECHAR CLICANDO FORA
+// ==============================
+
+if (modalAdicionarUsuario) {
+
+    modalAdicionarUsuario.addEventListener(
+        'click',
+        (event) => {
+
+            if (
+                event.target ===
+                modalAdicionarUsuario
+            ) {
+
+                modalAdicionarUsuario.classList.remove(
+                    'ativo'
+                );
+
+            }
+
+        }
+    );
+
+}
+
+
+// ==============================
+// CRIAR USUÁRIO
+// ==============================
+
+if (formAdicionarUsuario) {
+
+    formAdicionarUsuario.addEventListener(
+        'submit',
+        async (event) => {
+
+            event.preventDefault();
+
+            erroAdicionarUsuario.textContent = '';
+
+
+            const formData =
+                new FormData(
+                    formAdicionarUsuario
+                );
+
+
+            try {
+
+                const resposta =
+                    await fetch(
+                        '/cadastro/ceo/adicionar-usuario',
+                        {
+                            method: 'POST',
+                            body: formData
+                        }
+                    );
+
+
+                const resultado =
+                    await resposta.json();
+
+
+                // ==========================
+                // ERRO
+                // ==========================
+
+                if (!resposta.ok) {
+
+                    erroAdicionarUsuario.textContent =
+                        resultado.erro ||
+                        'Não foi possível criar o usuário.';
+
+                    return;
+
+                }
+
+
+                // ==========================
+                // SUCESSO
+                // ==========================
+
+                if (resultado.sucesso) {
+
+                    alert(
+                        'Usuário criado com sucesso!'
+                    );
+
+
+                    formAdicionarUsuario.reset();
+
+
+                    modalAdicionarUsuario.classList.remove(
+                        'ativo'
+                    );
+
+                }
+
+            } catch (erro) {
+
+                console.error(
+                    'Erro ao criar usuário:',
+                    erro
+                );
+
+
+                erroAdicionarUsuario.textContent =
+                    'Erro de comunicação com o servidor.';
+
+            }
+
+        }
+    );
+
+}
+
+}
